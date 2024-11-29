@@ -22,7 +22,7 @@ add_action('init', 'llms_markdown_add_rewrite_rules');
 add_filter( 'redirect_canonical', 'custom_redirect_canonical', 10, 2 );
 function custom_redirect_canonical( $redirect_url, $requested_url ) {
     if( str_ends_with( $requested_url, '/llms.txt' ) ) {
-        return $requested_url;
+        return untrailingslashit($redirect_url);
     }
 
     return $redirect_url;
