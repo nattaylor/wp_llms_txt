@@ -11,7 +11,6 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */
 
 function llms_markdown_add_rewrite_rules() {
-    error_log($_SERVER['REQUEST_URI']);
     add_rewrite_rule(
         '^llms\.txt$', 
         'index.php?llms_markdown=1', 
@@ -19,6 +18,15 @@ function llms_markdown_add_rewrite_rules() {
     );
 }
 add_action('init', 'llms_markdown_add_rewrite_rules');
+
+add_filter( 'redirect_canonical', 'custom_redirect_canonical', 10, 2 );
+function custom_redirect_canonical( $redirect_url, $requested_url ) {
+    if( str_ends_with( $requested_url, '/llms.txt' ) ) {
+        return $requested_url;
+    }
+
+    return $redirect_url;
+}
 
 function llms_markdown_add_query_vars($vars) {
     $vars[] = 'llms_markdown';
