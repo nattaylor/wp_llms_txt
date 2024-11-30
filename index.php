@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: llms_txt
-Plugin URI:  https://nattaylor.com/wp_llms_txt/
+Plugin URI:  https://nattaylor.com/ai/wp_llms_txt/
 Description: Exports all pages and posts in Markdown format when /llms.txt is called.
 Version:     0.1
 Author:      Nat Taylor
